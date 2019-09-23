@@ -3,18 +3,23 @@
 
 ### 目录结构
 ```
-|__ config          // 配置文件
-|__ controllers     // 路由处理
-|__ docs            // 生成测试文档和jsdoc文档
-|__ logs            // 日志输入目录
-|__ middlewares     // 中间件
-|__ public          // 静态文件目录
-|__ tests           // 测试文件目录
-|__ utils           // 辅助的工具目录
-|__ views           // 模板引擎文件
-|__ .gitignore      // git忽略文件
-|__ app.js          // 入口文件
-|__ mocha-run.js    // 测试启动文件
+|__ config                      // 配置文件
+    |__ index.js                // 默认配置文件 
+    |__ production.config.js    // 生产环境配置文件
+|__ controllers                 // 路由处理
+|__ docs                        // 生成测试文档和jsdoc文档
+|__ logs                        // 日志输入目录
+|__ middlewares                 // 中间件
+|__ public                      // 静态文件目录
+|__ tests                       // 测试文件目录
+    |__ service                 // 服务接口测试
+|__ utils                       // 辅助的工具目录
+    |__ log.js                  // 打印日志的工具
+|__ views                       // 模板引擎文件
+|__ .gitignore                  // git忽略文件
+|__ app.js                      // 入口文件
+|__ mocha-run.js                // 测试启动文件
+|__ pm2.json                    // pm2启动配置文件
 
 ```
 
