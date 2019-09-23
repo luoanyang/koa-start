@@ -1,7 +1,8 @@
 const log4js = require('log4js');
 const config = require('../config');
-
+console.log(config);
 log4js.configure({
+  disableClustering: true,
   appenders: {
     http: { type: 'file', filename: config.logSrc + 'http.log' },
     db: { type: 'file', filename: config.logSrc + 'db.log' },

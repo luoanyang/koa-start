@@ -1,0 +1,17 @@
+{
+  "name": "koaStart",
+  "script": "app.js",
+  "watch": true,
+  "ignore_watch": [
+    "node_modules",
+    "logs",
+    "public",
+    "tests",
+    "docs"
+  ],
+  "exec_mode": "cluster_mode",
+  "instances": "max",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

@@ -5,7 +5,9 @@ const defaultConfig = {
 
 
 // 生产环境配置
-const productionConfig = {};
+const productionConfig = {
+  data: '1232'
+};
 
 let config = defaultConfig;
 
