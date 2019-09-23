@@ -1,18 +1,13 @@
+const productionConfig = require('./production.config.js');
+
 // 默认和测试环境配置
-const defaultConfig = {
+let config = {
   logSrc: './logs/'
 };
 
-
 // 生产环境配置
-const productionConfig = {
-  data: '1232'
-};
-
-let config = defaultConfig;
-
 if (process.env.NODE_ENV === 'production') {
-  config = Object.assign(defaultConfig, productionConfig);
+  config = Object.assign(config, productionConfig);
 }
 
 module.exports = config;
