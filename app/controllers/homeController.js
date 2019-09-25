@@ -1,6 +1,6 @@
 class HomeController {
   async getHome(ctx, next) {
-    ctx.body2 = {
+    ctx.body = {
       code: '0',
       data: 'hello'
     }

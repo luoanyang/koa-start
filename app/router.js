@@ -1,4 +1,4 @@
-const homeController = require('./controllers/home');
+const homeController = require('./controllers/homeController');
 const Router = require('koa-router');
 const router = new Router();
 
