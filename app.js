@@ -1,7 +1,7 @@
-const errorHandler = require('./middlewares/errorHandler');
-const httpLogger = require('./middlewares/httpLogger');
+const errorHandler = require('./app/middlewares/errorHandler');
+const httpLogger = require('./app/middlewares/httpLogger');
 const bodyParser = require('koa-bodyparser');
-const router = require('./controllers');
+const router = require('./app/router');
 const static = require('koa-static');
 const views = require('koa-views');
 const path = require('path');
@@ -18,7 +18,7 @@ app.use(bodyParser());
 app.use(httpLogger);
 
 // 加载模版引擎的文件夹
-app.use(views(path.join(__dirname, './views'), {
+app.use(views(path.join(__dirname, './app/views'), {
   extension: 'ejs'
 }));
 
