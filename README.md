@@ -4,14 +4,17 @@
 ### 目录结构
 ```
 |__ app                         
-    |__ controllers             // 处理具体逻辑
-    |__ middlewares             // 中间件
-    |__ services                // 服务层
-       |__ dao                  // 数据库访问操作
-       |__ models               // 数据表结构
-    |__ utils                   // 辅助的工具目录
+    |__ controllers             // 处理具体逻辑目录
+    |__ extend                  // 拓展的工具目录
+        |__ index.js            // 一些常用方法和配置拓展
         |__ log.js              // 打印日志的工具
-    |__ views                   // 模板引擎文件
+    |__ middlewares             // 中间件
+    |__ public                  // 静态文件目录
+    |__ services                // 服务层
+       |__ dao                  // 数据库访问操作目录
+       |__ models               // 数据表结构目录
+    |__ views                   // 模板引擎文件目录
+    |__ router.js               // 路由文件
 |__ config                      // 配置文件
     |__ index.js                // 默认配置文件 
     |__ production.config.js    // 生产环境配置文件
@@ -19,7 +22,7 @@
 |__ logs                        // 日志输入目录
 |__ public                      // 静态文件目录
 |__ tests                       // 测试文件目录
-    |__ service                 // 服务接口测试
+    |__ service                 // 服务接口测试目录
 |__ .gitignore                  // git忽略文件
 |__ app.js                      // 入口文件
 |__ mocha-run.js                // 测试启动文件
