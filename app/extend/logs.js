@@ -1,6 +1,6 @@
 const config = require('../../config');
 const log4js = require('log4js');
-console.log(config);
+
 log4js.configure({
   disableClustering: true,
   appenders: {
@@ -11,7 +11,7 @@ log4js.configure({
   categories: {
     default: { appenders: ['http'], level: 'debug' },
     db: { appenders: ['db'], level: 'debug' },
-    error: { appenders: ['error'], level: 'error' },
+    error: { appenders: ['error'], level: 'debug' },
   }
 });
 

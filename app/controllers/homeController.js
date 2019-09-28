@@ -1,9 +1,8 @@
+const mysql = require('../services/dao/mysql-dao');
+
 class HomeController {
   async getHome(ctx, next) {
-    ctx.body = {
-      code: '0',
-      data: 'hello'
-    }
+    ctx.$send("hello home");
   }
 }
 
