@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node mocha-run.js",
-    "docs": "jsdoc ./app/**/*.js -d ./docs/jsdoc",
+    "docs": "jsdoc ./app/services/*.js -d ./docs/jsdoc",
     "dev": "nodemon app.js",
     "start": "cross-env NODE_ENV=production node app.js"
   },
