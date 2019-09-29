@@ -1,14 +1,15 @@
 const MysqlDao = require('./dao/mysql-dao');
 const model = require('./models/admin');
 
-const adminDao = new MysqlDao(model);
-
 /**
- * 管理员账号的增删改查类
+ * 管理员账号的增删改查服务
  *
  * @class AdminService
  */
 class AdminService {
+  constructor() {
+    this.adminDao = new MysqlDao(model);
+  }
 
   /**
    * 查询管理员
@@ -16,14 +17,14 @@ class AdminService {
    * @param {object} where 查询条件
    */
   find(where) {
-    return adminDao.find(where);
+    return this.adminDao.find(where);
   }
   /**
    * 查询管理员账号
    *
    */
   findAll() {
-    return adminDao.find({});
+    return this.adminDao.find({});
   }
 
   /**
@@ -32,7 +33,7 @@ class AdminService {
    * @param {object} data 创建管理员的账号
    */
   save(data) {
-    return adminDao.save(data);
+    return this.adminDao.save(data);
   }
 
   /**
@@ -42,7 +43,7 @@ class AdminService {
    * @param {object} data 更新的数据.
    */
   update(id, data) {
-    return adminDao.update(id, data);
+    return this.adminDao.update(id, data);
   }
 
   /**
@@ -51,7 +52,7 @@ class AdminService {
    * @param {number} id 管理员 id
    */
   delete(id) {
-    return adminDao.delete(id);
+    return this.adminDao.delete(id);
   }
 }
 

@@ -9,8 +9,8 @@ var mocha = new Mocha({
 });
 
 mocha.addFile('./tests/service/home.spec.js');
+mocha.addFile('./tests/service/admin.spec.js');
 
 mocha.run(function () {
-  console.log(done);
   process.exit();
 });

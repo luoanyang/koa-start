@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-describe('首页', function () {
-  it('首页数据查询接口', function (done) {
+describe('首页', () => {
+  it('首页数据查询接口', (done) => {
     axios.get('http://localhost:3000/api/home').then(res => {
       console.log(res.data)
       if (res.data.code === '0') {
