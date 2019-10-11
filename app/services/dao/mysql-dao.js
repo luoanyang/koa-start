@@ -1,9 +1,9 @@
-const { mysqlConfig } = require('../../../config');
+const { mysqlConfig, pageSize } = require('../../../config');
 const { dbLogger } = require('./../../extend/logs');
 const Sequelize = require('sequelize');
 
 const db = new Sequelize(mysqlConfig.database, mysqlConfig.username, mysqlConfig.password, {
-  host: 'localhost',
+  host: mysqlConfig.host,
   dialect: 'mysql',
   // 连接池
   pool: {
@@ -47,16 +47,37 @@ class MysqlDao {
     this.model = model(db);
     this.modelName = this.model.name;
   }
+
   /**
-   * 根据 where 条件查询.
+   * 分页查询
+   *
+   * @param {object} where 查询条件.
+   * @param {number} pageNo 页码
+   * @param {number} size 页数，默认为 config 配置中的 pageSize字段.
+   */
+  async query(where, pageNo, size = pageSize) {
+    dbLogger.debug(`[mysql query] tableName:${this.modelName} where:${JSON.stringify(where)} pageNo:${pageNo} size:${size}`);
+    const lists = await this.model.findAll({ where, offset: (pageNo - 1) * size, limit: size });
+    const count = await this.model.count({ where });
+    return {
+      lists,
+      totalPage: Math.ceil(count / size),
+      currentPage: pageNo
+    }
+  }
+
+
+
+  /**
+   * 根据 where 条件,查询所有数据.
    *
    * @param {object} where 查询的条件.
    * @param {array} order 排序顺序. [可空]
    * @param {object} options 额外条件. [可空]
    */
-  async find(where, order = [], options = {}) {
-    dbLogger.debug(`[mysql find] tableName:${this.modelName} where:${JSON.stringify(where)} order:${JSON.stringify(order)} options:${JSON.stringify(options)}`);
-    return await this.model.findAll(Object.assign({ where }, { order }, options));
+  async findAll(where, order = [], options = {}) {
+    dbLogger.debug(`[mysql findAll] tableName:${this.modelName} where:${JSON.stringify(where)} order:${JSON.stringify(order)} options:${JSON.stringify(options)}`);
+    return this.model.findAll(Object.assign({ where }, { order }, options));
   }
 
   /**
@@ -67,7 +88,7 @@ class MysqlDao {
    */
   async findOne(where, options = {}) {
     dbLogger.debug(`[mysql findOne] tableName:${this.modelName} where:${JSON.stringify(where)} options:${JSON.stringify(options)}`);
-    return await this.model.findOne(object.assign({ where }, options));
+    return this.model.findOne(Object.assign({ where }, options));
   }
 
   /**
@@ -78,7 +99,8 @@ class MysqlDao {
    */
   async findById(id) {
     dbLogger.debug(`[mysql findById] tableName:${this.modelName} id:${id}`);
-    return await this.model.findById(id);
+    console.log(this.model)
+    return this.model.findOne({ where: { id } });
   }
 
   /**
@@ -89,7 +111,7 @@ class MysqlDao {
    */
   async save(data) {
     dbLogger.debug(`[mySql save] tableName:${this.modelName} data:${JSON.stringify(data)}`);
-    return await this.model.create(data);
+    return this.model.create(data);
   }
 
   /**
@@ -112,7 +134,7 @@ class MysqlDao {
    */
   async delete(id) {
     dbLogger.debug(`[mysql delete] tableName:${this.modelName} id:${id}`);
-    return await this.model.destroy({ where: { id } });
+    return this.model.destroy({ where: { id } });
   }
 
 

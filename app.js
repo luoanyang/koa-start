@@ -9,7 +9,7 @@ const path = require('path');
 const Koa = require('koa');
 const app = new Koa();
 
-// 把 拓展的方法 和 config 配置 挂载到 ctx 上
+// 把 写日志的方法 拓展的方法 和 config 配置 挂载到 ctx 上
 app.use(extend);
 
 // 报错处理

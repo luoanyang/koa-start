@@ -3,7 +3,6 @@ const adminController = require('./controllers/adminController');
 const Router = require('koa-router');
 const router = new Router();
 
-console.log(adminController.save)
 
 /**
  *  视图
@@ -16,10 +15,11 @@ router.get('/', async (ctx, next) => await ctx.render('index', { title: 'hello n
  */
 router.get('/api/home', homeController.getHome);
 
-router.post('/api/login', adminController.find);
+router.post('/api/login', adminController.login);
 
 // 用户
-router.get('/api/admin', adminController.findAll);
+router.get('/api/admin', adminController.findUserById);
+router.get('/api/adminAll', adminController.findAll);
 router.post('/api/admin', adminController.save);
 router.put('/api/admin/:id', adminController.update);
 router.delete('/api/admin/:id', adminController.delete);

@@ -17,14 +17,15 @@ class AdminService {
    * @param {object} where 查询条件
    */
   find(where) {
-    return this.adminDao.find(where);
+    return this.adminDao.findOne(where);
   }
+
   /**
    * 查询管理员账号
    *
    */
   findAll() {
-    return this.adminDao.find({});
+    return this.adminDao.findAll({});
   }
 
   /**
@@ -53,6 +54,15 @@ class AdminService {
    */
   delete(id) {
     return this.adminDao.delete(id);
+  }
+
+  /**
+   * 根据管理员的账号id 查询信息
+   *
+   * @param {number} id 管理员id
+   */
+  findById(id) {
+    return this.adminDao.findById(id);
   }
 }
 

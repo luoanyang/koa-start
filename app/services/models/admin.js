@@ -8,7 +8,7 @@ module.exports = (db) => {
       autoIncrement: true
     },
 
-    rule: {
+    role: {
       type: Sequelize.STRING,
       comment: 'SUPER_ADMIN=>超级管理员 ADMIN=》管理员 USER=》客户',
       allowNull: false
@@ -16,7 +16,7 @@ module.exports = (db) => {
 
     limits: {
       type: Sequelize.JSON,
-      comment: '普通用户的功能限制'
+      comment: '客户用户的功能限制'
     },
 
     username: {

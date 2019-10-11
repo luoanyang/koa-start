@@ -10,8 +10,13 @@ let config = {
     unauthorize: '02'
   },
 
+  pageSize: 10,
+
+  jwtSecret: 'ceswadsdwak2312w%2213',
+
   // mysql 配置
   mysqlConfig: {
+    host: 'localhost',
     database: 'my_db',
     username: 'root',
     password: ''
