@@ -1,5 +1,6 @@
 const errorHandler = require('./app/middlewares/errorHandler');
 const httpLogger = require('./app/middlewares/httpLogger');
+const cors = require('./app/middlewares/cors');
 const bodyParser = require('koa-bodyparser');
 const extend = require('./app/extend');
 const router = require('./app/router');
@@ -8,6 +9,9 @@ const views = require('koa-views');
 const path = require('path');
 const Koa = require('koa');
 const app = new Koa();
+
+// 跨域请求配置
+app.use(cors);
 
 // 把 写日志的方法 拓展的方法 和 config 配置 挂载到 ctx 上
 app.use(extend);

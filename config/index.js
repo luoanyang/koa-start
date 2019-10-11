@@ -2,6 +2,11 @@ const productionConfig = require('./production.config.js');
 
 // 默认和测试环境配置
 let config = {
+
+  corsConfig: {
+    whiteListHosts: ['http://localhost:8080']
+  },
+
   logSrc: './logs/',
 
   resStatus: {
@@ -27,5 +32,4 @@ let config = {
 if (process.env.NODE_ENV === 'production') {
   config = Object.assign(config, productionConfig);
 }
-
 module.exports = config;
