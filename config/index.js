@@ -4,10 +4,13 @@ const productionConfig = require('./production.config.js');
 let config = {
 
   corsConfig: {
-    whiteListHosts: ['http://localhost:8080']
+    whiteListHosts: ['http://console.wesion.cn/', 'http://localhost:8080/']
   },
 
   logSrc: './logs/',
+
+  // 静态文件的 url
+  fileUrl: 'http://localhost:3000/',
 
   resStatus: {
     ok: '0',

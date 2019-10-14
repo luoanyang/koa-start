@@ -3,3 +3,4 @@ node_modules
 docs/*
 logs/*
 .vscode
+/app/public/*

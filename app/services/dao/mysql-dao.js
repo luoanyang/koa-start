@@ -14,7 +14,8 @@ const db = new Sequelize(mysqlConfig.database, mysqlConfig.username, mysqlConfig
     // 是否开始日志，默认是用console.log
     // 建议开启，方便对照生成的sql语句
     logging: true,
-  }
+  },
+  timezone: '+08:00' //东八时区
 });
 
 // 同步所有尚未在数据库中的模型
@@ -54,10 +55,11 @@ class MysqlDao {
    * @param {object} where 查询条件.
    * @param {number} pageNo 页码
    * @param {number} size 页数，默认为 config 配置中的 pageSize字段.
+   * @param {object} options 额外的参数配置.
    */
-  async query(where, pageNo, size = pageSize) {
-    dbLogger.debug(`[mysql query] tableName:${this.modelName} where:${JSON.stringify(where)} pageNo:${pageNo} size:${size}`);
-    const lists = await this.model.findAll({ where, offset: (pageNo - 1) * size, limit: size });
+  async query(where, pageNo, size = pageSize, options) {
+    dbLogger.debug(`[mysql query] tableName:${this.modelName} where:${JSON.stringify(where)} pageNo:${pageNo} size:${size} options:${JSON.stringify(options)}`);
+    const lists = await this.model.findAll(Object.assign({ where, offset: (pageNo - 1) * size, limit: size }, options));
     const count = await this.model.count({ where });
     return {
       lists,

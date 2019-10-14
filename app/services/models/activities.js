@@ -1,33 +1,20 @@
 const Sequelize = require('sequelize');
 
 module.exports = (db) => {
-  let admin = db.define('admin', {
+  let activities = db.define('activities', {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-
-    role: {
-      type: Sequelize.STRING,
-      comment: 'SUPER_ADMIN=>超级管理员 ADMIN=》管理员 USER=》客户',
-      allowNull: false
-    },
-
-    limits: {
-      type: Sequelize.JSON,
-      comment: '客户用户的功能限制'
-    },
-
-    username: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    password: {
-      type: Sequelize.STRING,
-      allowNull: false
+    remark: {
+      type: Sequelize.STRING
     },
-    nickname: {
+    customer: {
       type: Sequelize.STRING
     },
     createdAt: {
@@ -38,5 +25,5 @@ module.exports = (db) => {
       type: Sequelize.DATE
     }
   }, { freezeTableName: true });
-  return admin;
+  return activities;
 };
