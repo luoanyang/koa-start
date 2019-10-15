@@ -41,7 +41,7 @@ class ActivityController {
       user_mobile: mobile,
       user_province: province,
       user_city: city,
-      user_sex: sex === '男' ? '男' : '女',
+      user_sex: sex,
       source: source,
       user_remark: remark,
     };
