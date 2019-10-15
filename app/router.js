@@ -22,8 +22,8 @@ router.get('/api/home', homeController.getHome);
 router.post('/api/login', adminController.login);
 
 // 用户
-router.get('/api/admin', adminController.findUserById);
-router.get('/api/adminAll', adminController.findAll);
+router.get('/api/admin/info', adminController.findUserById);
+router.get('/api/admin', adminController.findAll);
 router.post('/api/admin', adminController.save);
 router.put('/api/admin/:id', adminController.update);
 router.delete('/api/admin/:id', adminController.delete);

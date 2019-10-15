@@ -35,6 +35,7 @@ module.exports = async (ctx, next) => {
 
 // 路由对应权限
 let routeAuthMap = new Map([
+  [/^\/api\/admin\/info/, ['SUPER_ADMIN', 'ADMIN', 'USER']],
   [/^\/api\/admin/, ['SUPER_ADMIN']],
   [/^\/api\/activity/, ['SUPER_ADMIN', 'ADMIN', 'USER']],
   [/^\/api\/activities/, ['SUPER_ADMIN', 'ADMIN']]
