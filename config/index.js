@@ -2,10 +2,8 @@ const productionConfig = require('./production.config.js');
 
 // 默认和测试环境配置
 let config = {
-
-  corsConfig: {
-    whiteListHosts: ['http://console.wesion.cn/', 'http://localhost:8080/']
-  },
+  // 允许跨域的白名单
+  corsWhiteListHosts: ['http://console.wesion.cn/', 'http://localhost:8080/'],
 
   logSrc: './logs/',
 
@@ -15,7 +13,8 @@ let config = {
   resStatus: {
     ok: '0',
     fail: '01',
-    unauthorize: '02'
+    unauthorize: '02',
+    forbidden: '03'
   },
 
   pageSize: 10,

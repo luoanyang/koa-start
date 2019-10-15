@@ -9,6 +9,6 @@ module.exports = async (ctx, next) => {
     console.error('error>>>>>>>')
     console.error(error)
     ctx.status = error.status || 500;
-    ctx.$send(error || 'error', ctx.$config.resStatus.fail);
+    ctx.$send(error.message || 'error', ctx.$config.resStatus.fail);
   }
 };

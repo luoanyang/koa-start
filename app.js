@@ -1,5 +1,6 @@
 const errorHandler = require('./app/middlewares/error-handler');
 const httpLogger = require('./app/middlewares/http-logger');
+const auth = require('./app/middlewares/auth');
 const cors = require('./app/middlewares/cors');
 const bodyParser = require('koa-bodyparser');
 const extend = require('./app/extend');
@@ -18,6 +19,9 @@ app.use(extend);
 
 // 报错处理
 app.use(errorHandler);
+
+// 权限管理
+app.use(auth);
 
 // 解析请求body
 app.use(bodyParser());

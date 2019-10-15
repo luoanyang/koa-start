@@ -1,4 +1,4 @@
-const { corsConfig } = require('./../../config');
+const { corsWhiteListHosts } = require('./../../config');
 const cors = require('koa2-cors');
 
 module.exports = cors({
@@ -7,10 +7,10 @@ module.exports = cors({
       return "*"; // 允许来自所有域名请求
     }
     const referer = ctx.header.referer;
-    if (corsConfig.whiteListHosts.some(item => item === referer)) {
+    if (corsWhiteListHosts.some(item => item === referer)) {
       return referer.replace(/\/$/, '');
     }
-    return corsConfig.whiteListHosts[0]; // 这样就能只允许域名的请求
+    return corsWhiteListHosts[0]; // 这样就能只允许域名的请求
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 5,

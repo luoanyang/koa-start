@@ -78,7 +78,7 @@ class AdminController {
       limits
     };
     if (password) {
-      updateData.password = password;
+      updateData.password = ctx.$helper.md5(ctx.$helper.md5(password));
     }
     const data = await adminService.update(id, updateData);
     ctx.$send(data, !data && ctx.$config.resStatus.fail);
