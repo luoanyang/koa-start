@@ -10,7 +10,7 @@ module.exports = cors({
     if (corsWhiteListHosts.some(item => item === referer)) {
       return referer.replace(/\/$/, '');
     }
-    return corsWhiteListHosts[0]; // 这样就能只允许域名的请求
+    return;
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 5,
